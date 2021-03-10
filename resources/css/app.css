@@ -1,0 +1,26 @@
+h1{
+    font-weight: bold;
+    color: white;
+}
+
+.background{
+    background: url('https://www.indiewire.com/wp-content/uploads/2020/08/ultimate-summer-movie-season.jpg?w=780') center/cover;
+    background-repeat: no-repeat;
+    filter: grayscale(80%);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.py-4{
+    filter: opacity(0.8);
+}
+.form-group label{
+    font-weight: bold;
+}
+.form-group input{
+    font-weight: 600;
+}
