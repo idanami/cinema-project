@@ -85,6 +85,7 @@ class Login_con extends Controller
     }
     public function logout()
     {
+        //logout
         if(session()->has('LoggedUser')){
             session()->pull('LoggedUser');
             return redirect('/login');    
