@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
 
 class Login_con extends Controller
 {
@@ -81,7 +83,7 @@ class Login_con extends Controller
 
       
     }
-    public function logout(Request $r)
+    public function logout()
     {
         if(session()->has('LoggedUser')){
             session()->pull('LoggedUser');
@@ -91,4 +93,46 @@ class Login_con extends Controller
 
     }
 
+
+    //create new table in controller
+
+
+    public function createTable($table_name, $fields = [])
+    {
+        // laravel check if table is not already exists
+        if (!Schema::hasTable($table_name)) {
+            Schema::create($table_name, function (Blueprint $table) use ($fields, $table_name) {
+                $table->increments('id');
+                if (count($fields) > 0) {
+                    foreach ($fields as $field) {
+                        $table->{$field['type']}($field['name']);
+                    }
+                }
+                $table->timestamps();
+            });
+    
+            return response()->json(['message' => 'Given table has been successfully created!'], 200);
+        }
+    
+        return response()->json(['message' => 'Given table is already existis.'], 400);
+    }
+    
+    
+    
+    public function operate()
+    {
+        // set dynamic table name according to your requirements
+    
+        $table_name = 'products';
+    
+        // set your dynamic fields (you can fetch this data from database this is just an example)
+        $fields = [
+            ['name' => 'field_1', 'type' => 'string'],
+            ['name' => 'field_2', 'type' => 'text'],
+            ['name' => 'field_3', 'type' => 'integer'],
+            ['name' => 'field_4', 'type' => 'longText']
+        ];
+    
+        return $this->createTable($table_name, $fields);
+    }
 }

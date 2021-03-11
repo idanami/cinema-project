@@ -5,6 +5,7 @@ use App\Http\Controllers\Login_con;
 use App\Http\Controllers\Home;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\DynamicDependent;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,9 @@ Route::post('/login_process',[Login_con::class,'process_login']);
 Route::get('/logout',[Login_con::class,'logout']);
 
 Route::get('/cinema-home',[Home::class,'index']);
+Route::get('/cinema-home',[Home::class,'index']);
+Route::get('/test',[DynamicDependent::class,'index'])->name('test');
+Route::get('/test2',[DynamicDependent::class,'fetch'])->name('test2');
 
 
 // Route::get('/login',[LoginController::class,'login']);

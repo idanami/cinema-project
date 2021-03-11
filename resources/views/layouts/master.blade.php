@@ -8,6 +8,14 @@
 </head>
 <body>
     <div class="background"></div>
+    <div class="main_header">
+        @if(session()->get('LoggedUser'))
+            <a href="logout">Logout</a>
+        @elseif(!(session()->get('LoggedUser')))
+            <a href="login">Login</a>
+            <a href="register">Register</a>
+        @endif
+    </div>
 <main class="py-4">
 @yield('content')
 </main>

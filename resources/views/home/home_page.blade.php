@@ -4,19 +4,39 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="/css/app.css" rel="stylesheet">
     @section('title','cinema home')
 </head>
 <body>
-<div class="background"></div>
+<!-- <div class="background"></div> -->
 
 @section('content')
-    <h1>welcome </h1>
-    <h1>Name:   {{  $LoggedUserInfo->name  }} </h1>
-    <h1>Email:  {{  $LoggedUserInfo->email  }} </h1>
-<main class="py-4">
-</main>
+
+<section class="cinema">
+    <div class="container">
+        <div class="all-list">
+            <select name="cinema" id="cinema" class="cinema-list">
+                <option value="">Select Cinema</option>
+                    @foreach($cinema_list as $cinema)
+                        <option value="{{ $cinema->cinema_name}}">{{ $cinema->cinema_name }}</option>
+                    @endforeach
+            </select>
+        </div>    
+        <div class="all-list">
+            <select name="movie" id="movie" class="cinema-list">
+                <option value="">Select Movie</option>
+            </select>
+        </div>
+        <div class="all-list">
+             <select name="seats" id="seats" class="cinema-list">
+                <option value="">Select City</option>
+            </select>
+        </div>
+        {{ csrf_field() }}
+    </div>
+</section>
+
 @endsection
+<script src="{{ mix('/js/app.js') }}"></script>
 
 </body>
 </html>

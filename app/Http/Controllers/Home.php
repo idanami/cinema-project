@@ -9,7 +9,7 @@ class Home extends Controller
 {
     public function index()
     {
-        iF(session()->has('LoggedUser')){
+        if(session()->has('LoggedUser')){
             $user = User::where('id','=',session('LoggedUser'))->first();
             $data = [
                 'LoggedUserInfo' => $user
