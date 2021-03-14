@@ -22,6 +22,7 @@ use App\Http\Controllers\DynamicDependent;
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('/register',[Login_con::class,'show_signup_form']);
 Route::post('/register_process',[Login_con::class,'process_signup']);
 Route::get('/login',[Login_con::class,'show_login_form']);
@@ -29,7 +30,8 @@ Route::post('/login_process',[Login_con::class,'process_login']);
 Route::get('/logout',[Login_con::class,'logout']);
 
 Route::get('/cinema-home',[Home::class,'index']);
-Route::get('/cinema-home',[Home::class,'index']);
+
+
 Route::get('/test',[DynamicDependent::class,'index'])->name('test');
 Route::get('/test2',[DynamicDependent::class,'fetch'])->name('test2');
 

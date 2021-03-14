@@ -14,8 +14,8 @@ class Home extends Controller
             $data = [
                 'LoggedUserInfo' => $user
             ];
-
+            return view('home.home_page',$data);
         }
-        return view('home.home_page',$data);
+        return redirect('/login');
     }
 }

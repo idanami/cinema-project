@@ -5,20 +5,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     @section('title','cinema home')
+
 </head>
 <body>
-<!-- <div class="background"></div> -->
 
 @section('content')
-
-<section class="cinema">
-    <div class="container">
+    <section class="cinema">
+    <div class="cinema-list">
         <div class="all-list">
             <select name="cinema" id="cinema" class="cinema-list">
                 <option value="">Select Cinema</option>
-                    @foreach($cinema_list as $cinema)
-                        <option value="{{ $cinema->cinema_name}}">{{ $cinema->cinema_name }}</option>
-                    @endforeach
+                    {{-- @foreach($cinema_list as $cinema) --}}
+                        {{-- <option value="{{ $cinema->cinema_name}}">{{ $cinema->cinema_name }}</option> --}}
+                    {{-- @endforeach --}}
             </select>
         </div>    
         <div class="all-list">
@@ -33,10 +32,11 @@
         </div>
         {{ csrf_field() }}
     </div>
-</section>
-
+    </section>
 @endsection
+
 <script src="{{ mix('/js/app.js') }}"></script>
 
 </body>
 </html>
+

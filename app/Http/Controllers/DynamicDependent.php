@@ -10,8 +10,8 @@ class DynamicDependent extends Controller
     function index()
     {
      $cinema_list = DB::table('cinema_list')
-         ->groupBy('cinema_name')
-         ->get();
+                        ->groupBy('cinema_name')
+                        ->get();
      return view('home.home_page')->with('cinema_list', $cinema_list);
     }
 
@@ -21,9 +21,9 @@ class DynamicDependent extends Controller
      $value = $request->get('value');
      $dependent = $request->get('dependent');
      $data = DB::table('country_state_city')
-       ->where($select, $value)
-       ->groupBy($dependent)
-       ->get();
+                ->where($select, $value)
+                ->groupBy($dependent)
+                ->get();
      $output = '<option value="">Select '.ucfirst($dependent).'</option>';
      foreach($data as $row)
      {
