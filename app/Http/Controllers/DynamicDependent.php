@@ -2,33 +2,42 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cinema;
+use App\Models\Movie;
+use App\Models\Radiations;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use SebastianBergmann\Environment\Console;
+use Symfony\Component\Console\Logger\ConsoleLogger;
 
 class DynamicDependent extends Controller
 {
-    function index()
+    // function index()
+    // {
+    //  $cinema_list = DB::table('cinemas')
+    //                     ->groupBy('name')
+    //                     ->get();
+    //  return view('home.home_page')->with('cinema_list', $cinema_list);
+    // }
+
+    function fetchMovie(Request $request)
     {
-     $cinema_list = DB::table('cinema_list')
-                        ->groupBy('cinema_name')
-                        ->get();
-     return view('home.home_page')->with('cinema_list', $cinema_list);
+        $cinema_id= $request->id;
+        $data = Radiations::select('movie_id')->where('cinema_id',$cinema_id)->get();
+        $movie = Movie::find($data);
+
+        return response()->json($movie);//then sent this data to ajax success
+
     }
 
-    function fetch(Request $request)
+    function fetchTimes(Request $request)
     {
-     $select = $request->get('select');
-     $value = $request->get('value');
-     $dependent = $request->get('dependent');
-     $data = DB::table('country_state_city')
-                ->where($select, $value)
-                ->groupBy($dependent)
-                ->get();
-     $output = '<option value="">Select '.ucfirst($dependent).'</option>';
-     foreach($data as $row)
-     {
-      $output .= '<option value="'.$row->$dependent.'">'.$row->$dependent.'</option>';
-     }
-     echo $output;
+        $cinema_id= $request->cinema_id;
+        $movie_id= $request->movie_id;
+
+        // return $request->cinema_id.' '.$request->movie_id;
+        $data = Radiations::select('screening_time')->where('movie_id',$movie_id)->where('cinema_id',$cinema_id)->get();
+
+        return response()->json($data);//then sent this data to ajax success
     }
 }

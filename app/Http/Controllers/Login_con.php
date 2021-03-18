@@ -7,21 +7,55 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
+use App\Models\Movie;
+use App\Models\Cinema;
+use App\Models\Radiations;
+use App\Models\Tickets;
 
 class Login_con extends Controller
 {
-  
+
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
     }
-    
+
     public function show_login_form()
     {
-        return view('auth.login');
+        // $cinema = new Cinema();
+        // $cinema->name ='rav hen';
+        // $cinema->address ='Glilot';
+        // $cinema->seats =100;
+        // $cinema->save();
+
+        $cinema = Cinema::find(2);
+
+        // $movie = new Movie();
+        // $movie->name = 'Fight Club';
+        // $movie->genres = 'Drama';
+        // $movie->duration_of_screenin= 200;
+        // $movie->save();
+
+        $movie = Movie::find(2);
+
+        // $radiations = new Radiations();
+        // $radiations->screening_time = '23:30';
+        // $movie->radiations()->save($radiations);
+        // $cinema->radiations()->save($radiations);
+
+        $radiations = Radiations::find(1);
+
+        // $tickets = new Tickets();
+        // $tickets->owner_card = 'gay';
+        // $tickets->chair_number = 10;
+        // $radiations->tickets()->save($tickets);
+
+        $cinema=Cinema::all();
+
+        return view('auth.login',compact('cinema'));
     }
-      
-    
+
+
     public function process_login(Request $request)
     {
 
@@ -43,7 +77,7 @@ class Login_con extends Controller
                 return redirect('/cinema-home');
             }
             return back()->with('fail','no match pass');
-        }   
+        }
         return back()->with('fail','no found acount');
     }
 
@@ -53,13 +87,13 @@ class Login_con extends Controller
     }
 
     public function process_signup(Request $request)
-    {   
+    {
         $request->validate([
             'name' => 'required',
             'email' => 'required|string|email|max:255',
             'password' => 'required|min:5|max:12',
         ]);
-        
+
         $name=$request->name;
 
         //check if new acount is exsist
@@ -81,14 +115,14 @@ class Login_con extends Controller
         }
         return back()->with('fail','you have not successfuly');
 
-      
+
     }
     public function logout()
     {
         //logout
         if(session()->has('LoggedUser')){
             session()->pull('LoggedUser');
-            return redirect('/login');    
+            return redirect('/login');
         }
 
 
@@ -111,21 +145,21 @@ class Login_con extends Controller
                 }
                 $table->timestamps();
             });
-    
+
             return response()->json(['message' => 'Given table has been successfully created!'], 200);
         }
-    
+
         return response()->json(['message' => 'Given table is already existis.'], 400);
     }
-    
-    
-    
+
+
+
     public function operate()
     {
         // set dynamic table name according to your requirements
-    
+
         $table_name = 'products';
-    
+
         // set your dynamic fields (you can fetch this data from database this is just an example)
         $fields = [
             ['name' => 'field_1', 'type' => 'string'],
@@ -133,7 +167,7 @@ class Login_con extends Controller
             ['name' => 'field_3', 'type' => 'integer'],
             ['name' => 'field_4', 'type' => 'longText']
         ];
-    
+
         return $this->createTable($table_name, $fields);
     }
 }

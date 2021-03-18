@@ -22,6 +22,13 @@
     background-color: #fff;
     align-items: center;
 }
+.cinema-update{
+    display: flex;
+    padding: 1rem;
+    flex-direction: column;
+    background-color: #fff;
+
+}
 .all-list{
     margin: 1.2rem;
     width: 40%;
@@ -29,6 +36,9 @@
 .all-list select{
     width: 100%;
     font-size: 1rem;
+}
+.seats_num{
+    display: none;
 }
 
 .background{
@@ -52,3 +62,4 @@
 .form-group input{
     font-weight: 600;
 }
+
