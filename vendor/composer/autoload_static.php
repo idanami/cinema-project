@@ -520,8 +520,6 @@ class ComposerStaticInit59fc9064479824de5103c7e16c757cdc
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
-        'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
-        'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Cinema_con' => __DIR__ . '/../..' . '/app/Http/Controllers/Cinema_con.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DynamicDependent' => __DIR__ . '/../..' . '/app/Http/Controllers/DynamicDependent.php',
@@ -542,7 +540,6 @@ class ComposerStaticInit59fc9064479824de5103c7e16c757cdc
         'App\\Models\\Movie' => __DIR__ . '/../..' . '/app/Models/Movie.php',
         'App\\Models\\Radiations' => __DIR__ . '/../..' . '/app/Models/Radiations.php',
         'App\\Models\\Tickets' => __DIR__ . '/../..' . '/app/Models/Tickets.php',
-        'App\\Models\\Times' => __DIR__ . '/../..' . '/app/Models/Times.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',

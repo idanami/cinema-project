@@ -14,7 +14,7 @@
 }
 .cinema{
     width: auto;
-    margin: 5rem 25%;
+    margin-top: 1rem;
 }
 .cinema-list{
     display: flex;
@@ -22,21 +22,7 @@
     background-color: #fff;
     align-items: center;
 }
-.cinema-update{
-    display: flex;
-    padding: 1rem;
-    flex-direction: column;
-    background-color: #fff;
 
-}
-.all-list{
-    margin: 1.2rem;
-    width: 40%;
-}
-.all-list select{
-    width: 100%;
-    font-size: 1rem;
-}
 .seats_num{
     display: none;
 }
@@ -54,11 +40,17 @@
 }
 
 .py-4{
-    filter: opacity(0.8);
+    filter: opacity(0.9);
 }
 .form-group label{
     font-weight: bold;
 }
 .form-group input{
     font-weight: 600;
+}
+
+@media (min-width: 40rem) {
+    .cinema{
+        margin: 4rem 15%;
+    }
 }

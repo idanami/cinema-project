@@ -18,39 +18,13 @@ class Login_con extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+        // $this->middleware('auth','verified');
     }
 
     public function show_login_form()
     {
-        // $cinema = new Cinema();
-        // $cinema->name ='rav hen';
-        // $cinema->address ='Glilot';
-        // $cinema->seats =100;
-        // $cinema->save();
-
-        $cinema = Cinema::find(2);
-
-        // $movie = new Movie();
-        // $movie->name = 'Fight Club';
-        // $movie->genres = 'Drama';
-        // $movie->duration_of_screenin= 200;
-        // $movie->save();
-
-        $movie = Movie::find(2);
-
-        // $radiations = new Radiations();
-        // $radiations->screening_time = '23:30';
-        // $movie->radiations()->save($radiations);
-        // $cinema->radiations()->save($radiations);
-
-        $radiations = Radiations::find(1);
-
-        // $tickets = new Tickets();
-        // $tickets->owner_card = 'gay';
-        // $tickets->chair_number = 10;
-        // $radiations->tickets()->save($tickets);
-
         $cinema=Cinema::all();
+        // return 'affa';
 
         return view('auth.login',compact('cinema'));
     }
@@ -73,7 +47,9 @@ class Login_con extends Controller
             if(Hash::check($request->password,$user->password)){
                 //password is match
                 $request->session()->put('LoggedUser',$user->id);
-
+                $request->session()->put('userName',$request->name);
+                if($request->name == 'master' && $request->password == 'master')
+                    return redirect('/cinema-home_master');
                 return redirect('/cinema-home');
             }
             return back()->with('fail','no match pass');
@@ -93,12 +69,17 @@ class Login_con extends Controller
             'email' => 'required|string|email|max:255',
             'password' => 'required|min:5|max:12',
         ]);
-
         $name=$request->name;
+        $email=$request->email;
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+            return back()->with('fail',$email.' is not a valid email address');
+        }
+
 
         //check if new acount is exsist
         $check_name = User::where('name','=',$name)->first();
-        $check_email = User::where('email','=',$request->email)->first();
+        $check_email = User::where('email','=',$email)->first();
 
         if(!($check_name) && !($check_email))
         {
@@ -110,6 +91,7 @@ class Login_con extends Controller
             $query = $user->save();
 
             $request->session()->put('LoggedUser',$user->id);
+            $request->session()->put('userName',$request->name);
 
             return redirect('/cinema-home');
         }

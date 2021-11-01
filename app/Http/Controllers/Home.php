@@ -21,15 +21,16 @@ class Home extends Controller
         }
         return redirect('/login');
     }
-    public function update()
+    public function masterPage()
     {
-        $cinema=Cinema::all();
+        if(session()->has('LoggedUser')){
+            if(session('userName') == 'master'){
+                $cinema=Cinema::all();
+                $movie=Movie::all();
 
-        return view('home.home_master',compact('cinema'));
-    }
-    public function newupdate($id)
-    {
-        return $id;
-        // return view('home.home_master');
+                return view('home.home_master',compact('cinema','movie'));
+            }
+            return redirect()->back();
+        }
     }
 }

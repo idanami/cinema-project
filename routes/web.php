@@ -7,6 +7,7 @@ use App\Http\Controllers\Home;
 
 use App\Http\Controllers\DynamicDependent;
 use App\Http\Controllers\UpdateCinema;
+use Illuminate\Support\Facades\Auth;
 use PhpParser\Node\Stmt\Return_;
 
 /*
@@ -26,30 +27,26 @@ Route::get('/', function () {
 });
 
 
-
+//connected
 Route::get('/register',[Login_con::class,'show_signup_form']);
 Route::post('/register_process',[Login_con::class,'process_signup']);
 Route::get('/login',[Login_con::class,'show_login_form']);
 Route::post('/login_process',[Login_con::class,'process_login']);
 Route::get('/logout',[Login_con::class,'logout']);
 
-
+//home
 Route::get('/cinema-home',[Home::class,'index']);
+Route::get('/cinema-home_master',[Home::class,'masterPage']);
 
+//update
+Route::post('/add-cinema',[UpdateCinema::class,'cinemaUpdate']);
+Route::post('/add-movie',[UpdateCinema::class,'movieUpdate']);
+Route::post('/add-radiations',[UpdateCinema::class,'radiationsUpdate']);
+Route::post('/cinemaupdate_seats',[UpdateCinema::class,'cinemaUpdateSeats']);
 
-Route::get('/cinemaupdate/{id}',[Cinema_con::class,'cinemaUpdate']);
-Route::get('/movieupdate/{id}',[Cinema_con::class,'movieUpdate']);
-
-
-Route::get('/update_data',[UpdateCinema::class,'cinemaUpdate']);
-
-
-
-
-
-Route::get('/update',[Home::class,'update']);
-Route::get('/newupdate/{id}',[Home::class,'newupdate']);
-
-// Route::get('/dynamicdependent',[DynamicDependent::class,'index'])->name('test');
+//dynamic ajax
 Route::get('/dynamicdependent-fetch_movie',[DynamicDependent::class,'fetchMovie'])->name('fetchmovie');
 Route::get('/dynamicdependent-fetch_time',[DynamicDependent::class,'fetchTimes'])->name('fetchtimes');
+Route::get('/dynamicdependent-fetch_seats',[DynamicDependent::class,'fetchSeats'])->name('fetchseats');
+
+

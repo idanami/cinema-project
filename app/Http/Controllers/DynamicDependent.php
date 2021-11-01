@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cinema;
 use App\Models\Movie;
 use App\Models\Radiations;
+use App\Models\Tickets;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use SebastianBergmann\Environment\Console;
@@ -12,13 +13,7 @@ use Symfony\Component\Console\Logger\ConsoleLogger;
 
 class DynamicDependent extends Controller
 {
-    // function index()
-    // {
-    //  $cinema_list = DB::table('cinemas')
-    //                     ->groupBy('name')
-    //                     ->get();
-    //  return view('home.home_page')->with('cinema_list', $cinema_list);
-    // }
+
 
     function fetchMovie(Request $request)
     {
@@ -34,10 +29,23 @@ class DynamicDependent extends Controller
     {
         $cinema_id= $request->cinema_id;
         $movie_id= $request->movie_id;
+        $radiations = Radiations::select('screening_time','id','seats')->where('movie_id',$movie_id)->where('cinema_id',$cinema_id)->get();
 
-        // return $request->cinema_id.' '.$request->movie_id;
-        $data = Radiations::select('screening_time')->where('movie_id',$movie_id)->where('cinema_id',$cinema_id)->get();
-
-        return response()->json($data);//then sent this data to ajax success
+        return response()->json($radiations);//then sent this data to ajax success
     }
+
+    function fetchSeats(Request $request)
+    {
+        $radiations= $request->id;
+        $tickets = Tickets::select('chair_number','owner_card')->where('radiations_id',$radiations)->get();
+
+        return response()->json($tickets);//then sent this data to ajax success
+    }
+    // function fetchTicket(Request $request)
+    // {
+    //     $radiations= $request->id;
+    //     $tickets = Tickets::select('chair_number','owner_card')->where('radiations_id',$radiations)->take(100)->get();
+
+    //     return response()->json($tickets);//then sent this data to ajax success
+    // }
 }

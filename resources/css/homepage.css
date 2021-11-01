@@ -1,0 +1,82 @@
+.cinema_home{
+    width: auto;
+    margin-top: 1rem;
+}
+.all-list{
+    margin: 1.2rem;
+    width: 60%;
+}
+.all-list select{
+    width: 100%;
+    font-size: 1rem;
+}
+.all-seats{
+    width: 90%;
+    height: auto;
+    display: grid;
+    margin: 1.5rem 0;
+    grid-template-columns: repeat(7,2rem);
+    grid-gap: 0.2rem;
+}
+
+.seat{
+    background-color:rgb(41, 22, 22);
+}
+.seat-div{
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    background: green;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    font-weight:600;
+}
+.seat-input{
+    height: 2rem;
+    color:white;
+    background: gray;
+    border: none;
+    border-radius: 20%;
+}
+.submit_seats{
+    font-size:  1.2rem;
+    padding: 0.3rem;
+    margin-bottom: 2rem;
+    color:white;
+    background-color:rgb(69, 173, 9);
+    grid-column: 1/4;
+    border: 2px solid rgb(69, 173, 9);
+}
+.submit_seats:hover,
+.submit_seats:active{
+    color: rgb(69, 173, 9);
+    background-color: white;
+}
+.submit_seats:focus{
+    outline-style: none;
+}
+.seat input:focus{
+    outline-style: none;
+}
+@media (min-width: 40rem) {
+.cinema_home{
+    margin: 4rem 15%;
+}
+.all-seats{
+    grid-template-columns: repeat(7,3rem);
+
+}
+.all-list{
+    width: 40%;
+}
+}
+@media (min-width: 60rem) {
+.all-seats{
+    grid-template-columns: repeat(7,4rem);
+
+}
+.all-list{
+    width: 40%;
+}
+}

@@ -15,7 +15,5 @@ class Tickets extends Model
     public function radiations(){
         return $this->belongsTo(Radiations::class);
     }
-    // public function cinemas(){
-    //     return $this->belongsTo(Cinema::class);
-    // }
+
 }

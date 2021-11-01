@@ -1,0 +1,223 @@
+.main_header{
+    text-align: end;
+}
+.main_header a{
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: blue;
+    margin: 0.5rem;
+}
+.main_header a:active,
+.main_header a:hover{
+    color: darkgreen;
+}
+.cinema{
+    width: auto;
+    margin-top: 1rem;
+}
+.cinema-list{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    align-items: center;
+}
+
+.seats_num{
+    display: none;
+}
+
+.background{
+    background: url('https://www.indiewire.com/wp-content/uploads/2020/08/ultimate-summer-movie-season.jpg?w=780') center/cover;
+    background-repeat: no-repeat;
+    filter: grayscale(80%);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.py-4{
+    filter: opacity(0.9);
+}
+.form-group label{
+    font-weight: bold;
+}
+.form-group input{
+    font-weight: 600;
+}
+
+@media (min-width: 40rem) {
+    .cinema{
+        margin: 4rem 15%;
+    }
+}
+
+.cinema_homemaster{
+    width: auto;
+    margin-top: 1rem;
+}
+.cinema-update{
+    display: flex;
+    padding: 1rem;
+    flex-direction: column;
+    background-color: #fff;
+    width:-webkit-fill-available;
+}
+
+.update_list{
+    display:flex;
+    justify-content:center;
+}
+
+.form-update__all{
+    margin-top: 0.8rem;
+}
+.update_title{
+    margin-top:0;
+    font-weight: 700;
+    width:12.5rem;
+    font-size: 1.5rem;
+}
+.subtitle{
+    margin: 0 0 1rem 0;
+}
+.cinema-update__list{
+    display:flex;
+    flex-direction:column;
+    margin-bottom: 1.5rem;
+}
+
+.data__update{
+    display:flex;
+    flex-direction:column;
+    margin-bottom: 1rem;
+}
+.data__update input{
+    max-width: 20rem;
+    color: darkblue;
+    font-weight: 600;
+}
+.data__update__submit input{
+    color: darkblue;
+    font-weight: 600;
+}
+.selected-list{
+    margin-bottom: 0.6rem;
+    width: 100%;
+    max-width: 20rem;
+}
+
+@media (min-width: 40rem) {
+    .cinema_homemaster{
+        margin: 1.5rem 20%;
+    }
+}
+@media (min-width: 60rem) {
+    .cinema-update{
+        padding: 0.8rem;
+    }
+    .cinema-update__list{
+        width: 32.5rem;
+        flex-direction:row;
+        flex-wrap: wrap;
+    }
+
+    .data__update{
+        flex-direction:row;
+        flex-wrap: wrap;
+    }
+    .data__update input{
+        margin: 0 0.8rem 1rem 0;
+    }
+}
+@media (min-width: 78rem) {
+    .cinema-update__list{
+        width: auto;
+    }
+}
+
+.cinema_home{
+    width: auto;
+    margin-top: 1rem;
+}
+.all-list{
+    margin: 1.2rem;
+    width: 60%;
+}
+.all-list select{
+    width: 100%;
+    font-size: 1rem;
+}
+.all-seats{
+    width: 90%;
+    height: auto;
+    display: grid;
+    margin: 1.5rem 0;
+    grid-template-columns: repeat(7,2rem);
+    grid-gap: 0.2rem;
+}
+
+.seat{
+    background-color:rgb(41, 22, 22);
+}
+.seat-div{
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    background: green;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    font-weight:600;
+}
+.seat-input{
+    height: 2rem;
+    color:white;
+    background: gray;
+    border: none;
+    border-radius: 20%;
+}
+.submit_seats{
+    font-size:  1.2rem;
+    padding: 0.3rem;
+    margin-bottom: 2rem;
+    color:white;
+    background-color:rgb(69, 173, 9);
+    grid-column: 1/4;
+    border: 2px solid rgb(69, 173, 9);
+}
+.submit_seats:hover,
+.submit_seats:active{
+    color: rgb(69, 173, 9);
+    background-color: white;
+}
+.submit_seats:focus{
+    outline-style: none;
+}
+.seat input:focus{
+    outline-style: none;
+}
+@media (min-width: 40rem) {
+.cinema_home{
+    margin: 4rem 15%;
+}
+.all-seats{
+    grid-template-columns: repeat(7,3rem);
+
+}
+.all-list{
+    width: 40%;
+}
+}
+@media (min-width: 60rem) {
+.all-seats{
+    grid-template-columns: repeat(7,4rem);
+
+}
+.all-list{
+    width: 40%;
+}
+}
