@@ -21,12 +21,6 @@ use PhpParser\Node\Stmt\Return_;
 |
 */
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
 //connected
 Route::get('/register',[Login_con::class,'show_signup_form']);
 Route::post('/register_process',[Login_con::class,'process_signup']);

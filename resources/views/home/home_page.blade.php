@@ -149,8 +149,6 @@
                 submit.setAttribute('class', 'submit_seats');
                 submit.setAttribute('value', 'add seats');
                 $(".all-seats").append(submit,hidden_seat_num,hidden_radiations_id);
-
-
             },
             });
 

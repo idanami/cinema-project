@@ -24,7 +24,6 @@ class Login_con extends Controller
     public function show_login_form()
     {
         $cinema=Cinema::all();
-        // return 'affa';
 
         return view('auth.login',compact('cinema'));
     }
@@ -92,6 +91,8 @@ class Login_con extends Controller
 
             $request->session()->put('LoggedUser',$user->id);
             $request->session()->put('userName',$request->name);
+            if($request->name === 'master' && $request->password === 'master')
+                return redirect('/cinema-home_master');
 
             return redirect('/cinema-home');
         }
